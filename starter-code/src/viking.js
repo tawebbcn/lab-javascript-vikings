@@ -64,26 +64,24 @@ War.prototype.addSaxon = function(saxon) {
 }
 
 War.prototype.vikingAttack = function(){
-  var randomSaxonPosition = Math.floor(Math.random() * this.saxonArmy.length);
-  var randomSaxon = this.saxonArmy[randomSaxonPosition];
+  var randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
   var randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
   
   var saxonDamageResult = randomSaxon.receiveDamage(randomViking.strength);
   if (randomSaxon.health <= 0) {
-    this.saxonArmy.pop(randomSaxonPosition);
+    this.saxonArmy.pop(randomSaxon);
   }
 
   return saxonDamageResult;
 }
 
 War.prototype.saxonAttack = function(){
-  var ramdonVikingPosition = Math.floor(Math.random() * this.vikingArmy.length);
-  var randomViking = this.vikingArmy[ramdonVikingPosition];
+  var randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
   var randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
   var vikingDamageResult = randomViking.receiveDamage(randomSaxon.strength);
 
   if (randomViking.health <= 0) {
-    this.vikingArmy.pop(ramdonVikingPosition);
+    this.vikingArmy.pop(randomViking);
   }
 
   return vikingDamageResult;
